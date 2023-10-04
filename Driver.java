@@ -1,30 +1,24 @@
-package lab01;
+package b07lab1;
+
+import java.io.FileNotFoundException;
 
 public class Driver {
-public static void main(String [] args) {
+public static void main(String [] args) throws FileNotFoundException {
 
-	Polynomial p = new Polynomial();
+double [] coef_1 = {1.0,2.0,-3.0};
+double [] coef_2 = {4.0,5.0,6.0};
+int [] expo_1 = {0,1,2};
+int [] expo_2 = {1,3,4};
+Polynomial poly_1 = new Polynomial(coef_1, expo_1);
+Polynomial poly_2 = new Polynomial(coef_2, expo_2);
+Polynomial poly_3 = poly_1.multiply(poly_2);
+for (int i = 0; i < poly_3.coef.length; i++){
+    System.out.println(poly_3.expo[i]);
+    System.out.println(poly_3.coef[i]);
 
-	System.out.println(p.evaluate(3));
+}
 
-	double [] c1 = {6,0,0,5};
+poly_1.saveToFile("test1");
 
-	Polynomial p1 = new Polynomial(c1);
-
-	double [] c2 = {0,-2,0,0,-9};
-
-	Polynomial p2 = new Polynomial(c2);
-
-	Polynomial s = p1.add(p2);
-
-	System.out.println("s(0.1) = " + s.evaluate(0.1));
-
-	if(s.hasRoot(1))
-
-		System.out.println("1 is a root of s");
-
-	else
-
-		System.out.println("1 is not a root of s");
 }
 }
